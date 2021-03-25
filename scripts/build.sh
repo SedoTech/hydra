@@ -1,7 +1,5 @@
 #!/bin/bash
 
-APP_VERSION=$1
-if [ -z "${APP_VERSION}" ]; then
-    APP_VERSION=development
-fi
-go build -ldflags "-X main.version=${APP_VERSION}" -o hydra cmd/*.go
+APP_VERSION="${1:-development}"; shift
+go build -ldflags "-X main.version=${APP_VERSION}" -o build/hydra cmd/*.go
+
