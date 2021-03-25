@@ -84,6 +84,14 @@ func (c *buildCmd) run() error {
 		tags := parser.parseTags(v)
 		logger.Infof("Use tags for image: %v", tags)
 
+		// Get Dockerfile from config or default one
+		var dockerfile string
+		if v.Dockerfile == "" {
+			dockerfile = "Dockerfile"
+		} else {
+			dockerfile = v.Dockerfile
+		}
+
 		// Tar the working directory to send to the docker API
 		tarfileName, err := TarWorkdir(directory)
 		check(err)
