@@ -36,3 +36,8 @@
 [[constraint]]
   name = "github.com/spf13/cobra"
   branch = "master"
+
+[[constraint]]
+  name = "github.com/docker/docker"
+  version = "v19.03.8"
+

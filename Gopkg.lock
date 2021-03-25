@@ -23,11 +23,7 @@
 [[projects]]
   digest = "1:7bd4ee459471abc0f36f95282f486eb2d523cf5099b1d99d625c55996d6439a6"
   name = "github.com/containerd/containerd"
-  packages = [
-    "errdefs",
-    "log",
-    "platforms",
-  ]
+  packages = ["errdefs"]
   pruneopts = ""
   revision = "05f951a3781f4f2c1911b05e61c160e9c30eaa8e"
   version = "v1.4.4"
@@ -45,7 +41,7 @@
   version = "v2.7.1"
 
 [[projects]]
-  digest = "1:f2407ee7dbedb200d77b72138f6aca5a1c8abc665d4a7622d782e8d81ee94201"
+  digest = "1:bbcd414ffb8a8b2e77ee902f9adf0bda1269711a3a4244d33d03cb16ffff7b1b"
   name = "github.com/docker/docker"
   packages = [
     "api",
@@ -68,8 +64,8 @@
     "errdefs",
   ]
   pruneopts = ""
-  revision = "363e9a88a11be517d9e8c65c998ff56f774eb4dc"
-  version = "v20.10.5"
+  revision = "420b1d36250f9cfdc561f086f25a213ecb669b6f"
+  version = "v19.03.15"
 
 [[projects]]
   digest = "1:ebe593d8b65a2947b78b6e164a2dac1a230b977a700b694da3a398b03b7afb04"
@@ -213,14 +209,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:69f658075e8f82bb7fbec90b7cbb11e200ce2e82aa4a3d71cf2c1b8e7d21549a"
+  digest = "1:faebf829c938763e3147b68f4850fc882a5fab0977702a869b3938a7ee4b0576"
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
   pruneopts = ""
-  revision = "5636347f2b14cf567c69c1cb8d7bb5ade4a07891"
+  revision = "eed09b1b5210501e9cd733f7de22b4a7e8bf815f"
 
 [[projects]]
-  digest = "1:6895898adb1f0a1086948d2eb4d2c38cf51482bdd82ae0ba0dd5ef83dec80cbd"
+  digest = "1:a80657e52347cdb88c9a0298cf4ad603f2ec04b6cf787ba39212e533291e27da"
   name = "google.golang.org/grpc"
   packages = [
     "codes",
@@ -228,8 +224,8 @@
     "status",
   ]
   pruneopts = ""
-  revision = "f74f0337644653eba7923908a4d7f79a4f3a267b"
-  version = "v1.36.0"
+  revision = "05138c1e2a54f85e9dc1898999296d6881931e41"
+  version = "v1.36.1"
 
 [[projects]]
   digest = "1:0411230c1d513425d5d96a6b193fc50e635cbabf0c27a58869c17c3c8edc67c4"
