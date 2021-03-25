@@ -92,14 +92,6 @@ func (c *buildCmd) run() error {
 		defer os.Remove(tarfile.Name())
 		logger.Infof("Using %t for build context", tarfile.Name())
 
-		var pull bool
-		if v.Pull == "" {
-			pull = true
-		} else {
-			pull, _ = strconv.ParseBool(v.Pull)
-		}
-		logger.Infof("Using pull: %t, config: %s", pull, v.Pull)
-
 		// Build image
 		buildResponse, err := cli.ImageBuild(context.Background(), tarfile, types.ImageBuildOptions{
 			PullParent: pull,
