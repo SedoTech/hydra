@@ -5,6 +5,36 @@
 
 Hydra helps you to build docker images of your applications with [semver](https://semver.org) based tags.
 
+
+## Requirements
+
+- Go [https://golang.org/dl/]
+- Dep [https://github.com/golang/dep]
+  ```go get -u github.com/golang/dep/cmd/dep```
+
+- Make sure go can access the source code as `sedoTech/hydra` package.
+
+By default go searches the source under `$GOPATH` which is `$HOME/go` by default
+
+So cloning the project into `$HOME/go/src/github.com/SedoTech/hydra` should work in most cases.
+
+
+## Update/Install dependencies
+
+Before you can compile the package you need to make sure required libraries are available locally
+
+- `dep ensure`                             install the project's dependencies
+- `dep ensure -update`                     update the locked versions of all dependencies
+
+This will create `vendor` directory and put them all there
+
+
+## Compile executable
+
+- Build final binary
+  `export GO111MODULE=auto; scripts/build.sh 0.0.6` will create `build/hydra` executable binary with version `0.0.6`
+
+
 ## How it works
 
 Hydra uses a config file named `hydra.yaml` to configure the build process of the docker images of your applications and generates multiple tags like the offical docker community images (for example the [golang](https://hub.docker.com/_/golang/) image).
@@ -12,6 +42,7 @@ Hydra uses a config file named `hydra.yaml` to configure the build process of th
 Here is an example `hydra.yaml` for a typical php base image in that companies use:
 
 ```yaml
+pull: true
 image:
 - my.private.registry:5000/docker-common/php-base
 versions:
@@ -76,6 +107,7 @@ Successfully tagged my.private.registry:5000/docker-common/php-base:php7.1
 Successfully tagged my.private.registry:5000/docker-common/php-base:alpine
 ```
 
+
 ## How to install
 
 Hydra has an installer script that will automatically grab the latest version of the Hydra client and install it locally.
@@ -98,6 +130,7 @@ Will also be aplied if no tag is specified.
 
     {SEMVER-VERSION}-{DIRECTORY-PATH}
 
+
 ### Simple
 
 Just adds the tag like in the config (e.g. `latest`).
@@ -109,6 +142,7 @@ The string `semver` is a special tag that generates three convenient tags. It ca
     {MAJOR-VERSION}.{FEATURE-VERSION}.{BUGFIX-VERSION}[-{SUFFIX}]
     {MAJOR-VERSION}.{FEATURE-VERSION}[-{SUFFIX}]
     {MAJOR-VERSION}[-{SUFFIX}]
+
 
 ### Replace
 
@@ -128,6 +162,7 @@ Assume we are in the branch `feature/AB-123`. Typical you would build your image
 
 - my.private.registry:5000/docker-common/nginx-base:AB-123-nginx
 - my.private.registry:5000/docker-common/nginx-base:AB-123
+
 
 ### Skip
 
@@ -152,6 +187,7 @@ Assume we are in the branch `feature/AB-123`. Typical you would build your image
 
 The tags `nginx` and `latest` are skipped.
 
+
 ## Commands
 
 ### Build
@@ -165,3 +201,4 @@ Can be used to build and tag your images.
 Can be used to push all images to the registry.
 
     hydra push VERSION [-w WORKDIR]
+
