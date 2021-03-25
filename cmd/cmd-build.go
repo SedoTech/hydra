@@ -10,6 +10,7 @@ import (
 	"path"
 	"path/filepath"
 	"strings"
+	"strconv"
 
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/client"
@@ -67,6 +68,14 @@ func (c *buildCmd) run() error {
 	cli, err := client.NewEnvClient()
 	check(err)
 
+	var pull bool
+	if config.Pull == "" {
+		pull = true
+	} else {
+		pull, _ = strconv.ParseBool(config.Pull)
+	}
+	logger.Infof("Using pull: %t, config: %s", pull, config.Pull)
+
 	// Build each version from the config
 	for _, v := range config.Versions {
 		var directory = path.Join(c.workdir, v.Directory) + string(filepath.Separator)
@@ -75,25 +84,25 @@ func (c *buildCmd) run() error {
 		tags := parser.parseTags(v)
 		logger.Infof("Use tags for image: %v", tags)
 
-		// Get Dockerfile from config or default one
-		var dockerfile string
-		if v.Dockerfile == "" {
-			dockerfile = "Dockerfile"
-		} else {
-			dockerfile = v.Dockerfile
-		}
-
 		// Tar the working directory to send to the docker API
 		tarfileName, err := TarWorkdir(directory)
 		check(err)
 		tarfile, err := os.Open(tarfileName)
 		check(err)
 		defer os.Remove(tarfile.Name())
-		logger.Infof("Using %s for build context", tarfile.Name())
+		logger.Infof("Using %t for build context", tarfile.Name())
+
+		var pull bool
+		if v.Pull == "" {
+			pull = true
+		} else {
+			pull, _ = strconv.ParseBool(v.Pull)
+		}
+		logger.Infof("Using pull: %t, config: %s", pull, v.Pull)
 
 		// Build image
 		buildResponse, err := cli.ImageBuild(context.Background(), tarfile, types.ImageBuildOptions{
-			PullParent: true,
+			PullParent: pull,
 			Tags:       c.imageUtil.getImageTags(config, tags),
 			Context:    tarfile,
 			Dockerfile: dockerfile,

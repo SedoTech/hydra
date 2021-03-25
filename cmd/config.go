@@ -25,6 +25,7 @@ type DefaultConfigReader struct{}
 type Config struct {
 	Image    []string
 	Versions []Version
+	Pull       string
 }
 
 // Version contains informations that are necessary to build and tag the image
