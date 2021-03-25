@@ -1,7 +1,7 @@
 # Hydra
 
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
-[![Build Status](https://travis-ci.org/benkeil/hydra.svg?branch=master)](https://travis-ci.org/benkeil/hydra) [![Go Report Card](https://goreportcard.com/badge/github.com/benkeil/hydra)](https://goreportcard.com/report/github.com/benkeil/hydra) [![codecov](https://codecov.io/gh/benkeil/hydra/branch/master/graph/badge.svg)](https://codecov.io/gh/benkeil/hydra) [![Github Release](https://img.shields.io/github/release/benkeil/hydra.svg)](https://github.com/benkeil/hydra/releases)
+[![Build Status](https://travis-ci.org/SedoTech/hydra.svg?branch=master)](https://travis-ci.org/SedoTech/hydra) [![Go Report Card](https://goreportcard.com/badge/github.com/SedoTech/hydra)](https://goreportcard.com/report/github.com/SedoTech/hydra) [![codecov](https://codecov.io/gh/SedoTech/hydra/branch/master/graph/badge.svg)](https://codecov.io/gh/SedoTech/hydra) [![Github Release](https://img.shields.io/github/release/SedoTech/hydra.svg)](https://github.com/SedoTech/hydra/releases)
 
 Hydra helps you to build docker images of your applications with [semver](https://semver.org) based tags.
 
@@ -114,13 +114,13 @@ Hydra has an installer script that will automatically grab the latest version of
 
 You can fetch that script, and then execute it locally. It’s well documented so that you can read through it and understand what it is doing before you run it.
 
-    curl https://raw.githubusercontent.com/benkeil/hydra/master/scripts/get > get_hydra.sh
+    curl https://raw.githubusercontent.com/SedoTech/hydra/master/scripts/get > get_hydra.sh
     chmod 700 get_hydra.sh
     ./get_hydra.sh
 
 You can also run
 
-    curl https://raw.githubusercontent.com/benkeil/hydra/master/scripts/get | bash
+    curl https://raw.githubusercontent.com/SedoTech/hydra/master/scripts/get | bash
 
 ## Tagging strategies
 
